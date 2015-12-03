@@ -11,6 +11,7 @@ namespace gamepackage {
 	{
 	public:
 		virtual void draw() = 0;
+		virtual void tick() = 0;
 		virtual ~Sprite();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
