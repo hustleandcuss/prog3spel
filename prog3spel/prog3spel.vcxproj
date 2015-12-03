@@ -122,10 +122,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameFrame.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameFrame.h" />
+    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
