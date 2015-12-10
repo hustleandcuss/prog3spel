@@ -1,22 +1,37 @@
 #include "GameFrame.h"
 
-gamepackage::GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
-{
-}
+namespace gamepackage {
 
-gamepackage::GameFrame::~GameFrame()
-{
-}
+	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
+	{
+		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
+		ren = SDL_CreateRenderer(win, -1, 0);
 
-SDL_Renderer * gamepackage::GameFrame::getRenderer()
-{
-	return nullptr;
-}
+	}
 
-void gamepackage::GameFrame::run()
-{
-}
+	GameFrame::~GameFrame()
+	{
+		SDL_DestroyRenderer(ren);
+		SDL_DestroyWindow(win);
+	}
 
-void gamepackage::GameFrame::add(Sprite * spr)
-{
+	SDL_Renderer * GameFrame::getRenderer()
+	{
+		return ren;
+	}
+
+	void GameFrame::run()
+	{
+		//cler ren
+		//draw
+		//while loop
+		//while loop m. switch(eve)
+		//osv
+	}
+
+	void GameFrame::add(Sprite * spr)
+	{
+		spritesVec.push_back(spr);
+	}
+
 }

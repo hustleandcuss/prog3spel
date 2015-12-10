@@ -7,6 +7,10 @@ namespace gamepackage {
 	class PlayableSprite : public Sprite
 	{
 	public:
+		void draw();
+		void tick();
+		void keyDown();
+		void keyUp();
 		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 		~PlayableSprite();
 	protected:

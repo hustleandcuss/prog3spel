@@ -12,6 +12,23 @@ namespace gamepackage {
 		standingSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
 	}
 
+	void PlayableSprite::draw() {
+		SDL_RenderCopy(win->getRenderer(), standingSprite, NULL, &rect);
+		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
+		//standingSprite, leftSprite eller rightSprite...
+	}
+
+	void PlayableSprite::tick() {
+
+	}
+
+	void PlayableSprite::keyDown() {
+		//Kolla om det är höger eller vänster pil och agera
+	}
+
+	void PlayableSprite::keyUp() {
+		//standingSprite
+	}
 
 	PlayableSprite::~PlayableSprite()
 	{
