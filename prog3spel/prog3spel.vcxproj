@@ -74,9 +74,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\sdl\SDL2_ttf-2.0.12\include;C:\sdl\SDL2_mixer-2.0.0\include;C:\sdl\SDL2_image-2.0.0\include;C:\sdl\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\sdl\SDL2_ttf-2.0.12\lib\x86;C:\sdl\SDL2_mixer-2.0.0\lib\x86;C:\sdl\SDL2_image-2.0.0\lib\x86;C:\sdl\SDL\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -122,10 +126,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameFrame.cpp" />
+    <ClCompile Include="NonPlayabeSprite.cpp" />
+    <ClCompile Include="PlayableSprite.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameFrame.h" />
+    <ClInclude Include="NonPlayabeSprite.h" />
+    <ClInclude Include="PlayableSprite.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
