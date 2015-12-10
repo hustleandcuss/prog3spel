@@ -15,8 +15,8 @@ namespace gamepackage {
 		virtual ~Sprite();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
-	//	SDL_Rect rect;
-	//	GameFrame* frame;
+		SDL_Rect rect;
+		GameFrame* win;
 	private:
 		Sprite(const Sprite&) = delete;
 		const Sprite& opetator=(const Sprite&) = delete;
