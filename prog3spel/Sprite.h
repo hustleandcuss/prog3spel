@@ -11,9 +11,9 @@ namespace gamepackage {
 	{
 	public:
 		virtual void draw() = 0;
-		virtual void tick() = 0;
-		virtual void keyDown() = 0;
-		virtual void keyUp() = 0;
+		virtual void tick() {}
+		virtual void keyDown(const SDL_Event&) {}
+		virtual void keyUp(const SDL_Event&) {}
 		virtual ~Sprite();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);

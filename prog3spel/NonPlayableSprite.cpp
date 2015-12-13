@@ -12,6 +12,7 @@ namespace gamepackage {
 	}
 
 	void NonPlayableSprite::draw() {
+		SDL_RenderCopy(win->getRenderer(), spriteImg, NULL, &rect);
 
 	}
 
@@ -19,11 +20,11 @@ namespace gamepackage {
 
 	}
 
-	void NonPlayableSprite::keyDown() {
+	void NonPlayableSprite::keyDown(const SDL_Event& e) {
 
 	}
 
-	void NonPlayableSprite::keyUp() {
+	void NonPlayableSprite::keyUp(const SDL_Event& e) {
 
 	}
 

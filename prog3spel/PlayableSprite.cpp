@@ -7,9 +7,9 @@ namespace gamepackage {
 	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :// : win(gf), rect{ x, y, w, h }
 		Sprite(gf, x, y, w, h)
 	{
-		leftSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
+		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
 	}
 
 	void PlayableSprite::draw() {
@@ -22,11 +22,16 @@ namespace gamepackage {
 
 	}
 
-	void PlayableSprite::keyDown() {
-		//Kolla om det är höger eller vänster pil och agera
+	void PlayableSprite::keyDown(const SDL_Event& e) {
+		if (e.key.keysym.sym == SDLK_LEFT) {
+		//	x--;
+		}
+		else if (e.key.keysym.sym == SDLK_RIGHT) {
+			//x++;
+		}
 	}
 
-	void PlayableSprite::keyUp() {
+	void PlayableSprite::keyUp(const SDL_Event& e) {
 		//standingSprite
 	}
 

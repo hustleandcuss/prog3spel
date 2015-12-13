@@ -8,9 +8,9 @@ namespace gamepackage {
 	{
 	public:
 		void draw();
-		void tick();
-		void keyDown();
-		void keyUp();
+		void tick() {}
+		void keyDown(const SDL_Event&);
+		void keyUp(const SDL_Event&);
 		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 		~PlayableSprite();
 	protected:
