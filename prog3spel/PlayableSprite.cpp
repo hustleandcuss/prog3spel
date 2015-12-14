@@ -18,10 +18,6 @@ namespace gamepackage {
 		//standingSprite, leftSprite eller rightSprite...
 	}
 
-	void PlayableSprite::tick() {
-
-	}
-
 	void PlayableSprite::keyDown(const SDL_Event& e) {
 		if (e.key.keysym.sym == SDLK_LEFT) {
 		//	x--;

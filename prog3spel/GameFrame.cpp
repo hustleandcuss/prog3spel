@@ -1,4 +1,5 @@
 #include "GameFrame.h"
+#include "Sprite.h"
 
 namespace gamepackage {
 
@@ -28,9 +29,12 @@ namespace gamepackage {
 		for (Sprite* s : spritesVec) {
 			s->draw();
 		}
+
+		const int TIMEPERTICK = 50;
 		//loop som går så länge runOn = true
 		bool runOn = true;
 		while (runOn) {
+			Uint32 nextTick = SDL_GetTicks() + TIMEPERTICK;
 			SDL_Event e;
 			//while loop m. switch(eve) som väntar på event
 			while (SDL_PollEvent(&e)) {
@@ -54,9 +58,14 @@ namespace gamepackage {
 			//rensa och rita om spritesen
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
+				s->tick();
 				s->draw();
 			}
 			SDL_RenderPresent(ren);
+
+			if (!SDL_TICKS_PASSED(SDL_GetTicks(), nextTick)) {
+				SDL_Delay(nextTick - SDL_GetTicks());
+			}
 
 		} //while runOn
 	} //run()

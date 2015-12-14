@@ -1,5 +1,5 @@
-#ifndef PLAYABLESPRITE.H
-#define PLAYABLESPRITE.H
+#ifndef PLAYABLESPRITE_H
+#define PLAYABLESPRITE_H
 #include "Sprite.h"
 
 namespace gamepackage {
