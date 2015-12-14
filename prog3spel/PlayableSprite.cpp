@@ -7,9 +7,9 @@ namespace gamepackage {
 	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
+		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/square.jpg");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/square.jpg");
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/square.jpg");
 	}
 
 	void PlayableSprite::draw() {
