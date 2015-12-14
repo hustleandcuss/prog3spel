@@ -17,7 +17,7 @@ namespace gamepackage {
 	}
 
 	void NonPlayableSprite::tick() {
-
+		//y--;
 	}
 
 	void NonPlayableSprite::keyDown(const SDL_Event& e) {
