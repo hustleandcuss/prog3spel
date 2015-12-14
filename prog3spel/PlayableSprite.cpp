@@ -4,7 +4,7 @@
 
 namespace gamepackage {
 
-	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :// : win(gf), rect{ x, y, w, h }
+	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
 		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
