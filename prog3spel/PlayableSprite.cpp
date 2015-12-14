@@ -4,14 +4,36 @@
 
 namespace gamepackage {
 
-	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :// : win(gf), rect{ x, y, w, h }
+	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		leftSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "imgURL");
+		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/sprite.jpg");
 	}
 
+	void PlayableSprite::draw() {
+		SDL_RenderCopy(win->getRenderer(), standingSprite, NULL, &rect);
+		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
+		//standingSprite, leftSprite eller rightSprite...
+	}
+
+	void PlayableSprite::tick() {
+
+	}
+
+	void PlayableSprite::keyDown(const SDL_Event& e) {
+		if (e.key.keysym.sym == SDLK_LEFT) {
+		//	x--;
+		}
+		else if (e.key.keysym.sym == SDLK_RIGHT) {
+			//x++;
+		}
+	}
+
+	void PlayableSprite::keyUp(const SDL_Event& e) {
+		//standingSprite
+	}
 
 	PlayableSprite::~PlayableSprite()
 	{
