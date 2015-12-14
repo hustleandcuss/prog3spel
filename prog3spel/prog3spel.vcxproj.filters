@@ -44,5 +44,16 @@
     <ClInclude Include="NonPlayableSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\square.jpeg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\squareOr.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
