@@ -5,10 +5,14 @@
 
 namespace gamepackage {
 
+	NonPlayableSprite* NonPlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {
+		return new NonPlayableSprite(gf, x, y, w, h);
+	}
+
 	NonPlayableSprite::NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		spriteImg = IMG_LoadTexture(win->getRenderer(), "imgURL");
+		spriteImg = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
 	}
 
 	void NonPlayableSprite::draw() {
@@ -17,17 +21,8 @@ namespace gamepackage {
 	}
 
 	void NonPlayableSprite::tick() {
-
+		rect.y++;
 	}
-
-	void NonPlayableSprite::keyDown(const SDL_Event& e) {
-
-	}
-
-	void NonPlayableSprite::keyUp(const SDL_Event& e) {
-
-	}
-
 
 	NonPlayableSprite::~NonPlayableSprite()
 	{
