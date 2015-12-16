@@ -81,7 +81,7 @@ namespace gamepackage {
 				for (Sprite* other : spritesVec) {
 					if (other->getPos().x >= spritesVec[i]->getPos().x && other->getPos().x <= spritesVec[i]->getPos().x + spritesVec[i]->getPos().w &&
 						other->getPos().y >= spritesVec[i]->getPos().y && other->getPos().y <= spritesVec[i]->getPos().y + spritesVec[i]->getPos().h) {
-						if (typeid(NonPlayableSprite) == typeid(spritesVec[i]) && other != spritesVec[i]) {
+						if (other != spritesVec[i]) { // && other != spritesVec[i] typeid(NonPlayableSprite) == typeid(spritesVec[i])
 							spritesVec.erase(spritesVec.begin()+i);
 						}
 					}

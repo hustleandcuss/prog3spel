@@ -13,14 +13,18 @@ int main(int argc, char** arv) {
 
 		int gfWidth = 700;
 		GameFrame* gf = new GameFrame("Play a Sprite", 200, 200, gfWidth, 500);
+		Sprite* s1 = new PlayableSprite(gf, 100, 100, 30, 15);
 
-
+		int xcord = rand() % gfWidth;
+		int ycord = rand() % 5000 + 0;
+		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -5, 30, 30);
+		/*
 		for(int i = 0; i < 100; i++) {
 			int xcord = rand() % gfWidth;
 			int ycord = rand() % 5000 + 0;
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 30, 30);
 		}
-
+		*/
 		gf->run();
 
 	}
