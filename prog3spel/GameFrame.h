@@ -15,6 +15,7 @@ namespace gamepackage {
 		SDL_Renderer* getRenderer();
 		void run();
 		void add(Sprite* spr);
+		
 	private:
 		friend class Sprite;
 		std::vector<Sprite*> spritesVec;
