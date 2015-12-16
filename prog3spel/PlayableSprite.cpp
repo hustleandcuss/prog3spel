@@ -44,6 +44,7 @@ namespace gamepackage {
 		SDL_DestroyTexture(standingSprite);
 		SDL_DestroyTexture(leftSprite);
 		SDL_DestroyTexture(rightSprite);
+		SDL_DestroyTexture(shownSprite);
 	}
 
 

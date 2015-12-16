@@ -11,6 +11,7 @@ namespace gamepackage {
 
 	Sprite::~Sprite()
 	{
+		delete &rect; //wtf delete behöver pointers, behöver man ta bort 
 	}
 
 	SDL_Rect Sprite::getPos()

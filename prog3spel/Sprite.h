@@ -18,7 +18,7 @@ namespace gamepackage {
 		SDL_Rect getPos();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
-		SDL_Rect rect;
+		SDL_Rect rect; //varför inte pekare?
 		GameFrame* win;
 	private:
 		Sprite(const Sprite&) = delete;
