@@ -1,6 +1,5 @@
 #ifndef NONPLAYABLESPRITE_H
 #define NONPLAYABLESPRITE_H
-
 #include "Sprite.h"
 
 namespace gamepackage {
@@ -12,11 +11,11 @@ namespace gamepackage {
 		void draw();
 		void tick();
 		void keyDown(const SDL_Event&) {}
-		void keyUp(const SDL_Event&) {}
-		static NonPlayableSprite* getInstance(GameFrame* gf, int x, int y, int w, int h);
+		void keyUp(const SDL_Event&){}
+		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 		~NonPlayableSprite();
 	protected:
-		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);
+
 	private:
 		SDL_Texture *texture, *spriteImg;
 	};
