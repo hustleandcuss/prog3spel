@@ -142,7 +142,6 @@
     <ClInclude Include="GameFrame.h" />
     <ClInclude Include="NonPlayableSprite.h" />
     <ClInclude Include="PlayableSprite.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="System.h" />
   </ItemGroup>
