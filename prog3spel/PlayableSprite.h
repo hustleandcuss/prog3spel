@@ -8,15 +8,16 @@ namespace gamepackage {
 	{
 	public:
 		void draw();
-		void tick() {}
 		void keyDown(const SDL_Event&);
 		void keyUp(const SDL_Event&);
 		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 		~PlayableSprite();
+		int speed;
+
 	protected:
-		
+
 	private:
-		SDL_Texture *texture, *leftSprite, *rightSprite, *standingSprite;
+		SDL_Texture *texture, *leftSprite, *rightSprite, *standingSprite, *shownSprite;
 	};
 
 }
