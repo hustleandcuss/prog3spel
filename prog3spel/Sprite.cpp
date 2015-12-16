@@ -13,5 +13,10 @@ namespace gamepackage {
 	{
 	}
 
+	SDL_Rect Sprite::getPos()
+	{
+		return rect;
+	}
+
 }
 
