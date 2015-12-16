@@ -15,6 +15,7 @@ namespace gamepackage {
 		virtual void keyDown(const SDL_Event&) {}
 		virtual void keyUp(const SDL_Event&) {}
 		virtual ~Sprite();
+		SDL_Rect getPos();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
 		SDL_Rect rect;
@@ -22,7 +23,7 @@ namespace gamepackage {
 	private:
 		Sprite(const Sprite&) = delete;
 		const Sprite& operator=(const Sprite&) = delete;
-		
+
 	};
 
 }

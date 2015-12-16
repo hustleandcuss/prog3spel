@@ -65,12 +65,24 @@ namespace gamepackage {
 			SDL_RenderPresent(ren);
 
 			//kolla om NonPlayableSprites krockar med PlayableSprite
+			/*
 			for (Sprite* s : spritesVec) {
 				for (Sprite* other : spritesVec) {
-					if (other->getPos().x >= s->getPos.x >= && other->getPos().x <= s->getPos.x + s->getPos().w &&
-						other->getPos().y >= s->getPos().y && other.getPos().y <= s->getPos().y + s->getPos().h &&) {
+					if (other->getPos().x >= s->getPos.x && other->getPos().x <= s->getPos.x + s->getPos().w &&
+						other->getPos().y >= s->getPos().y && other->getPos().y <= s->getPos().y + s->getPos().h) {
 						if (typeid(NonPlayableSprite) == typeid(s) && other != s) {
 							spritesVec.erase(s);
+						}
+					}
+				}
+			}
+			*/
+			for (int i = 0; i < spritesVec.size(); i++) {
+				for (Sprite* other : spritesVec) {
+					if (other->getPos().x >= spritesVec[i]->getPos().x && other->getPos().x <= spritesVec[i]->getPos().x + spritesVec[i]->getPos().w &&
+						other->getPos().y >= spritesVec[i]->getPos().y && other->getPos().y <= spritesVec[i]->getPos().y + spritesVec[i]->getPos().h) {
+						if (typeid(NonPlayableSprite) == typeid(spritesVec[i]) && other != spritesVec[i]) {
+							spritesVec.erase(spritesVec.begin()+i);
 						}
 					}
 				}
