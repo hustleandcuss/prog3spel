@@ -1,4 +1,6 @@
 #include "GameFrame.h"
+#include "Sprite.h"
+
 
 namespace gamepackage {
 

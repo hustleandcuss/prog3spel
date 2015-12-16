@@ -20,15 +20,6 @@ namespace gamepackage {
 		rect.y--;
 	}
 
-	void NonPlayableSprite::keyDown(const SDL_Event& e) {
-
-	}
-
-	void NonPlayableSprite::keyUp(const SDL_Event& e) {
-
-	}
-
-
 	NonPlayableSprite::~NonPlayableSprite()
 	{
 	}
