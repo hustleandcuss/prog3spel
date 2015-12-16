@@ -1,5 +1,6 @@
 #include "GameFrame.h"
 #include "Sprite.h"
+#include "NonPlayableSprite.h"
 
 namespace gamepackage {
 
@@ -62,6 +63,18 @@ namespace gamepackage {
 				s->draw();
 			}
 			SDL_RenderPresent(ren);
+
+			//kolla om NonPlayableSprites krockar med PlayableSprite
+			for (Sprite* s : spritesVec) {
+				for (Sprite* other : spritesVec) {
+					if (other->getPos().x >= s->getPos.x >= && other->getPos().x <= s->getPos.x + s->getPos().w &&
+						other->getPos().y >= s->getPos().y && other.getPos().y <= s->getPos().y + s->getPos().h &&) {
+						if (typeid(NonPlayableSprite) == typeid(s) && other != s) {
+							spritesVec.erase(s);
+						}
+					}
+				}
+			}
 
 			if (!SDL_TICKS_PASSED(SDL_GetTicks(), nextTick)) {
 				SDL_Delay(nextTick - SDL_GetTicks());
