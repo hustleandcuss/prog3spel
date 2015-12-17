@@ -15,8 +15,10 @@ namespace gamepackage {
 		SDL_Renderer* getRenderer();
 		void run();
 		void add(Sprite* spr);
+		std::vector <Sprite*>::iterator kill(std::vector <Sprite*>::iterator iter);
 	private:
 		friend class Sprite;
+		friend class NonPlayableSprite;
 		std::vector<Sprite*> spritesVec;
 		SDL_Window* win;
 		SDL_Renderer* ren;

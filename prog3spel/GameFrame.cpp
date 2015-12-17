@@ -77,15 +77,30 @@ namespace gamepackage {
 				}
 			}
 			*/
-			for (int i = 0; i < spritesVec.size(); i++) {
+			/*
+			std::vector <Sprite*>::iterator iter;
+			for (iter = spritesVec.begin(); iter != spritesVec.end();) {
 				for (Sprite* other : spritesVec) {
-					if (other->getPos().x >= spritesVec[i]->getPos().x && other->getPos().x <= spritesVec[i]->getPos().x + spritesVec[i]->getPos().w &&
-						other->getPos().y >= spritesVec[i]->getPos().y && other->getPos().y <= spritesVec[i]->getPos().y + spritesVec[i]->getPos().h) {
-						if (other != spritesVec[i]) { // && other != spritesVec[i] typeid(NonPlayableSprite) == typeid(spritesVec[i])
-							spritesVec.erase(spritesVec.begin()+i);
+					if (other->getPos().x >= (*iter)->getPos().x && other->getPos().x <= (*iter)->getPos().x + (*iter)->getPos().w &&
+						other->getPos().y >= (*iter)->getPos().y && other->getPos().y <= (*iter)->getPos().y + (*iter)->getPos().h) {
+						if (other != (*iter)) {
+							(*iter)->collision();
+						//	iter = spritesVec.erase(iter);
 						}
 					}
 				}
+				iter++;
+			}*/
+			/*
+			for (Sprite* s : spritesVec) {
+				s->collision();
+
+			}*/
+
+			std::vector <Sprite*>::iterator iter;
+			for (iter = spritesVec.begin(); iter != spritesVec.end();) {
+				iter = kill(iter);
+				iter++;
 			}
 
 			if (!SDL_TICKS_PASSED(SDL_GetTicks(), nextTick)) {
@@ -98,6 +113,12 @@ namespace gamepackage {
 	void GameFrame::add(Sprite * spr)
 	{
 		spritesVec.push_back(spr);
+	}
+
+	std::vector <Sprite*>::iterator GameFrame::kill(std::vector <Sprite*>::iterator iter) {
+		std::vector <Sprite*>::iterator i = spritesVec.erase(iter);
+
+		return i;
 	}
 
 }

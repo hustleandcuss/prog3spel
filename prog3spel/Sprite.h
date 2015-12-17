@@ -14,6 +14,7 @@ namespace gamepackage {
 		virtual void tick() {}
 		virtual void keyDown(const SDL_Event&) {}
 		virtual void keyUp(const SDL_Event&) {}
+		virtual void collision() {}
 		virtual ~Sprite();
 		SDL_Rect getPos();
 	protected:
