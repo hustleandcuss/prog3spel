@@ -63,6 +63,14 @@ namespace gamepackage {
 			//rensa och rita om spritesen
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
+				for (Sprite* s2 : spritesVec) {
+					if (SDL_HasIntersection(&s->getPos(), &s2->getPos())) {
+						s->collision();
+						s->collision();
+					}
+				}
+			}
+			for (Sprite* s : spritesVec) {
 				s->draw();
 			}
 			SDL_RenderPresent(ren);

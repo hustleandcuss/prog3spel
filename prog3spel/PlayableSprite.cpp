@@ -51,5 +51,10 @@ namespace gamepackage {
 		SDL_DestroyTexture(shownSprite);
 	}
 
+	void PlayableSprite::collision()
+	{
+		
+	}
+
 
 }
