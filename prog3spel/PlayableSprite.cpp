@@ -8,8 +8,8 @@ namespace gamepackage {
 		Sprite(gf, x, y, w, h)
 	{
 		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/Namnlos.png");
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/Namnlos2.png");
 		shownSprite = standingSprite;
 	}
 
@@ -37,6 +37,10 @@ namespace gamepackage {
 	void PlayableSprite::keyUp(const SDL_Event& e) {
 		speed = 0;
 		shownSprite = standingSprite;
+	}
+
+	PlayableSprite* PlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {
+		return new PlayableSprite(gf, x, y, w, h);
 	}
 
 	PlayableSprite::~PlayableSprite()

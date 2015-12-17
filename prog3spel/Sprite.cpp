@@ -18,6 +18,5 @@ namespace gamepackage {
 	{
 		return rect;
 	}
-
 }
 

@@ -12,6 +12,7 @@ namespace gamepackage {
 		void tick();
 		void keyDown(const SDL_Event&) {}
 		void keyUp(const SDL_Event&){}
+		NonPlayableSprite * getInstance(GameFrame * gf, int x, int y, int w, int h);
 		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 		~NonPlayableSprite();
 	protected:

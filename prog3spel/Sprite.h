@@ -23,7 +23,6 @@ namespace gamepackage {
 	private:
 		Sprite(const Sprite&) = delete;
 		const Sprite& operator=(const Sprite&) = delete;
-		
 	};
 
 }

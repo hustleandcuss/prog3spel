@@ -10,12 +10,12 @@ namespace gamepackage {
 		void draw();
 		void keyDown(const SDL_Event&);
 		void keyUp(const SDL_Event&);
-		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
+		static PlayableSprite* getInstance(GameFrame* gf, int x, int y, int w, int h);
 		~PlayableSprite();
 		int speed;
 
 	protected:
-		
+		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 	private:
 		SDL_Texture *texture, *leftSprite, *rightSprite, *standingSprite, *shownSprite;
 	};
