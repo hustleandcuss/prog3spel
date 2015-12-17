@@ -1,4 +1,5 @@
 #include "NonPlayableSprite.h"
+#include "PlayableSprite.h"
 #include "Sprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
@@ -12,7 +13,7 @@ namespace gamepackage {
 	NonPlayableSprite::NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		spriteImg = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
+		spriteImg = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft.png");
 	}
 
 	void NonPlayableSprite::draw() {
@@ -26,18 +27,7 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-	//	gf->remove();
-	/*	std::vector <Sprite*>::iterator iter;
-		for (iter = win->spritesVec.begin(); iter != win->spritesVec.end();) {
-			if(getPos().x >= (*iter)->getPos().x && getPos().x <= (*iter)->getPos().x + (*iter)->getPos().w ||
-				getPos().y >= (*iter)->getPos().y && getPos().y <= (*iter)->getPos().y + (*iter)->getPos().h) {
-				iter = win->kill(iter);
-
-			}
-			else {
-				iter++;
-			}
-		}*/
+		//DEt som händer nör de krockar
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()

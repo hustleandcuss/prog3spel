@@ -16,9 +16,9 @@ namespace gamepackage {
 		void run();
 		void add(Sprite* spr);
 		void setFps(int newFps);
-		
 	private:
 		friend class Sprite;
+		friend class NonPlayableSprite;
 		std::vector<Sprite*> spritesVec;
 		int fps = 60;
 		int varv = 0; //ska gå 60 varv per sekund

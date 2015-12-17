@@ -79,6 +79,8 @@ namespace gamepackage {
 		spritesVec.push_back(spr);
 	}
 
+	
+
 	void GameFrame::setFps(int newFps)
 	{
 		fps = newFps;
