@@ -13,7 +13,7 @@ namespace gamepackage {
 	NonPlayableSprite::NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		spriteImg = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft.png");
+		spriteImg = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
 	}
 
 	void NonPlayableSprite::draw() {

@@ -60,7 +60,6 @@ namespace gamepackage {
 
 			} //while event
 
-			//rensa och rita om spritesen
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
 				for (Sprite* s2 : spritesVec) {
@@ -70,6 +69,8 @@ namespace gamepackage {
 					}
 				}
 			}
+
+			//rensa och rita om spritesen
 			for (Sprite* s : spritesVec) {
 				s->draw();
 			}
@@ -86,8 +87,6 @@ namespace gamepackage {
 	{
 		spritesVec.push_back(spr);
 	}
-
-	
 
 	void GameFrame::setFps(int newFps)
 	{
