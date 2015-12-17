@@ -13,17 +13,26 @@ namespace gamepackage {
 	NonPlayableSprite::NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		spriteLeft = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft100x122.png");
-		spriteRight = IMG_LoadTexture(win->getRenderer(), "images/fallingRight100x122.png");
+		spriteLeft = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft.png");
+		spriteRight = IMG_LoadTexture(win->getRenderer(), "images/fallingRight.png");
 	}
 
 	void NonPlayableSprite::draw() {
-		SDL_RenderCopy(win->getRenderer(), spriteLeft, NULL, &rect);
+		if (tickCount % 10 == 0) {
+			switchImg = !switchImg;
+		}
 
+		if (switchImg) {
+			SDL_RenderCopy(win->getRenderer(), spriteRight, NULL, &rect);
+		}
+		else {
+			SDL_RenderCopy(win->getRenderer(), spriteLeft, NULL, &rect);
+		}
 	}
 
 	void NonPlayableSprite::tick() {
 		rect.y++;
+		tickCount++;
 	}
 
 	
