@@ -18,7 +18,7 @@ namespace gamepackage {
 	}
 
 	void NonPlayableSprite::draw() {
-		SDL_RenderCopy(win->getRenderer(), spriteImg, NULL, &rect);
+		SDL_RenderCopy(win->getRenderer(), spriteLeft, NULL, &rect);
 
 	}
 
