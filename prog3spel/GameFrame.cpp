@@ -2,6 +2,7 @@
 #include "Sprite.h"
 #include "NonPlayableSprite.h"
 
+
 namespace gamepackage {
 
 	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
