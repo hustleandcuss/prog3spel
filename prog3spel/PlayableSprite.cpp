@@ -8,8 +8,8 @@ namespace gamepackage {
 		Sprite(gf, x, y, w, h)
 	{
 		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/squareOr.png");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/Namnlos.png");
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/Namnlos2.png");
 		shownSprite = standingSprite;
 	}
 
@@ -39,11 +39,16 @@ namespace gamepackage {
 		shownSprite = standingSprite;
 	}
 
+	PlayableSprite* PlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {
+		return new PlayableSprite(gf, x, y, w, h);
+	}
+
 	PlayableSprite::~PlayableSprite()
 	{
 		SDL_DestroyTexture(standingSprite);
 		SDL_DestroyTexture(leftSprite);
 		SDL_DestroyTexture(rightSprite);
+		SDL_DestroyTexture(shownSprite);
 	}
 
 

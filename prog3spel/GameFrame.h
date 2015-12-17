@@ -15,10 +15,13 @@ namespace gamepackage {
 		SDL_Renderer* getRenderer();
 		void run();
 		void add(Sprite* spr);
+		void setFps(int newFps);
 		
 	private:
 		friend class Sprite;
 		std::vector<Sprite*> spritesVec;
+		int fps = 60;
+		int varv = 0; //ska gå 60 varv per sekund
 		SDL_Window* win;
 		SDL_Renderer* ren;
 

@@ -31,10 +31,16 @@ namespace gamepackage {
 			s->draw();
 		}
 		//loop som går så länge runOn = true
+		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
+		int nextTick; //när nästa tick ska komma
+		int delay; //hur lång tid det ska väntas innan nästa tick
+
 		bool runOn = true;
 		while (runOn) {
 			SDL_Event e;
 			//while loop m. switch(eve) som väntar på event
+			nextTick = SDL_GetTicks() + tickInterval;
+			
 			while (SDL_PollEvent(&e)) {
 				switch (e.type) {
 				case SDL_QUIT: 
@@ -51,6 +57,7 @@ namespace gamepackage {
 					}
 					break;
 				} //switch
+
 			} //while event
 
 			//rensa och rita om spritesen
@@ -59,13 +66,22 @@ namespace gamepackage {
 				s->draw();
 			}
 			SDL_RenderPresent(ren);
-
+			
+			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
+			if (delay > 0) {
+				SDL_Delay(delay);
+			}
 		} //while runOn
 	} //run()
 
 	void GameFrame::add(Sprite * spr)
 	{
 		spritesVec.push_back(spr);
+	}
+
+	void GameFrame::setFps(int newFps)
+	{
+		fps = newFps;
 	}
 
 }
