@@ -52,5 +52,20 @@
     <Image Include="images\squareOr.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\playableLeft150x163.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\playableRight150x163.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\fallingLeft100x122.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\fallingRight100x122.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\layingSprite110x47.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
