@@ -19,7 +19,7 @@ namespace gamepackage {
 	protected:
 		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);
 	private:
-		SDL_Texture *texture, *spriteImg;
+		SDL_Texture *texture, *spriteLeft, *spriteRight;
 	};
 
 }

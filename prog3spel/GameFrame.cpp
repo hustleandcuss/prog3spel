@@ -60,6 +60,10 @@ namespace gamepackage {
 
 			} //while event
 
+			for (Sprite* s : spritesVec) {
+				s->tick();
+			}
+
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
 				for (Sprite* s2 : spritesVec) {
