@@ -17,14 +17,14 @@ int main(int argc, char** arv) {
 
 		int xcord = rand() % gfWidth;
 		int ycord = rand() % 5000 + 0;
-		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -5, 30, 30);
-		/*
+	//	NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -5, 50, 50);
+	
 		for(int i = 0; i < 100; i++) {
 			int xcord = rand() % gfWidth;
 			int ycord = rand() % 5000 + 0;
-			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 30, 30);
+			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
 		}
-		*/
+		
 		gf->run();
 
 	}

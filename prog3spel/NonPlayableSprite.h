@@ -18,6 +18,8 @@ namespace gamepackage {
 		~NonPlayableSprite();
 	protected:
 		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);
+		int tickCount = 0;
+		bool switchImg = true;
 	private:
 		SDL_Texture *texture, *spriteLeft, *spriteRight;
 	};
