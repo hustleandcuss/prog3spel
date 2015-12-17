@@ -37,7 +37,7 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-		//DEt som händer nör de krockar
+		
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()

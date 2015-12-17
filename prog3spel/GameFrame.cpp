@@ -92,6 +92,10 @@ namespace gamepackage {
 		spritesVec.push_back(spr);
 	}
 
+	void GameFrame::kill(std::vector<Sprite*> iter) {
+		iter = spritesVec.erase(iter);
+	}
+
 	void GameFrame::setFps(int newFps)
 	{
 		fps = newFps;
