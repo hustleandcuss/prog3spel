@@ -13,6 +13,7 @@ namespace gamepackage {
 		static PlayableSprite* getInstance(GameFrame* gf, int x, int y, int w, int h);
 		~PlayableSprite();
 		int speed;
+		void collision();
 
 	protected:
 		PlayableSprite(GameFrame* gf, int x, int y, int w, int h);
