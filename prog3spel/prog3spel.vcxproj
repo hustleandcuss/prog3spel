@@ -146,6 +146,11 @@
     <ClInclude Include="System.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\fallingLeft100x122.png" />
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\fallingRight100x122.png" />
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\layingSprite110x47.png" />
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\playableLeft150x163.png" />
+    <Image Include="..\..\..\..\..\OneDrive\Dokument\DSV\PROG3\Inlupp\playableRight150x163.png" />
     <Image Include="images\square.jpeg" />
     <Image Include="images\squareOr.png" />
   </ItemGroup>

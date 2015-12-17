@@ -3,7 +3,7 @@
 
 namespace gamepackage {
 
-	Sprite::Sprite(GameFrame* gf, int x, int y, int w, int h) : win(gf), rect{x, y, w, h}
+	Sprite::Sprite(GameFrame* gf, int x, int y, int w, int h) : win(gf), rect{ x, y, w, h }
 	{
 		gf->add(this);
 	}

@@ -11,18 +11,20 @@ namespace gamepackage {
 	{
 	public:
 		virtual void draw() = 0;
-		virtual void tick(){}
-		virtual void keyDown(const SDL_Event&){}
-		virtual void keyUp(const SDL_Event&){}
+		virtual void tick() {}
+		virtual void keyDown(const SDL_Event&) {}
+		virtual void keyUp(const SDL_Event&) {}
+		virtual void collision() {}
 		virtual ~Sprite();
 		SDL_Rect getPos();
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
-		SDL_Rect rect; //varför inte pekare?
+		SDL_Rect rect;
 		GameFrame* win;
 	private:
 		Sprite(const Sprite&) = delete;
 		const Sprite& operator=(const Sprite&) = delete;
+
 	};
 
 }

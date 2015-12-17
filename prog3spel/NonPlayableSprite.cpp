@@ -24,6 +24,22 @@ namespace gamepackage {
 		rect.y++;
 	}
 
+	
+	void NonPlayableSprite::collision() {
+	//	gf->remove();
+	/*	std::vector <Sprite*>::iterator iter;
+		for (iter = win->spritesVec.begin(); iter != win->spritesVec.end();) {
+			if(getPos().x >= (*iter)->getPos().x && getPos().x <= (*iter)->getPos().x + (*iter)->getPos().w ||
+				getPos().y >= (*iter)->getPos().y && getPos().y <= (*iter)->getPos().y + (*iter)->getPos().h) {
+				iter = win->kill(iter);
+
+			}
+			else {
+				iter++;
+			}
+		}*/
+	}
+
 	NonPlayableSprite::~NonPlayableSprite()
 	{
 	}
