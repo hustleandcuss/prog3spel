@@ -17,6 +17,9 @@ namespace gamepackage {
 		void add(Sprite* spr);
 		void setFps(int newFps);
 		void kill(Sprite*);
+		std::vector<Sprite*> getSpritesVec() {
+			return spritesVec;
+		}
 	private:
 		friend class Sprite;
 		friend class NonPlayableSprite;
