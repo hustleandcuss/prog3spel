@@ -17,6 +17,7 @@ namespace gamepackage {
 		virtual void collision() {}
 		virtual ~Sprite();
 		SDL_Rect getPos();
+		bool isDead = false;
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
 		SDL_Rect rect;

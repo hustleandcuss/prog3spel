@@ -32,8 +32,8 @@ int main(int argc, char** arv) {
 		}*/
 		
 	//	gf->run();
-	//	SDL_Delay(2000);
-	//	gf->kill(s);
+		SDL_Delay(2000);
+		gf->kill(s);
 
 	}
 	catch (runtime_error& e) {
