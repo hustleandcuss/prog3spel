@@ -38,8 +38,7 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-		win->kill(this);
-		std::cout << "FUcku!";
+		
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()

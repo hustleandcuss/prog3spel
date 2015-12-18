@@ -77,6 +77,12 @@ namespace gamepackage {
 				}
 			}
 
+			for (Sprite* s : spritesVec) {
+				if (s->isDead) {
+					kill(s);
+				}
+			}
+
 			//rensa och rita om spritesen
 			for (Sprite* s : spritesVec) {
 				s->draw();
