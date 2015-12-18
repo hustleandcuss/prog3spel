@@ -24,10 +24,10 @@ int main(int argc, char** arv) {
 			int ycord = rand() % 5000 + 0;
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
 		}*/
-		
+		gf->kill(s);
 		gf->run();
 		SDL_Delay(2000);
-		gf->kill(s);
+		
 
 	}
 	catch (runtime_error& e) {
