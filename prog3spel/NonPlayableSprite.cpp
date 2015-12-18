@@ -38,12 +38,7 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-	//	for (std::vector<Sprite*>::iterator iter = win.spritesVec.begin(); iter != win.end(); iter++) {
-	//		if (this == (*iter)) {
-
-	//		}
-	//	}
-	//	std::cout << "Crash!" << std::endl;
+		win->kill(this);
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()
