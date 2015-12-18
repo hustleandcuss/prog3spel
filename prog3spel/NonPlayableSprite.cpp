@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
+#include <iostream>
 
 namespace gamepackage {
 
@@ -37,7 +38,12 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-		
+	//	for (std::vector<Sprite*>::iterator iter = win.spritesVec.begin(); iter != win.end(); iter++) {
+	//		if (this == (*iter)) {
+
+	//		}
+	//	}
+	//	std::cout << "Crash!" << std::endl;
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()

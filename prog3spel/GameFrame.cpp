@@ -1,6 +1,6 @@
 #include "GameFrame.h"
 #include "Sprite.h"
-
+#include <vector>
 
 namespace gamepackage {
 
@@ -67,7 +67,7 @@ namespace gamepackage {
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
 				for (Sprite* s2 : spritesVec) {
-					if (SDL_HasIntersection(&s->getPos(), &s2->getPos())) {
+					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
 						s->collision();
 					}
@@ -92,7 +92,7 @@ namespace gamepackage {
 		spritesVec.push_back(spr);
 	}
 
-	void GameFrame::kill(std::vector<Sprite*> iter) {
+	void GameFrame::kill(std::vector<Sprite*>::iterator iter) {
 		iter = spritesVec.erase(iter);
 	}
 
