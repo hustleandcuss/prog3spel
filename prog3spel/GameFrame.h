@@ -16,7 +16,7 @@ namespace gamepackage {
 		void run();
 		void add(Sprite* spr);
 		void setFps(int newFps);
-		void kill(std::vector<Sprite*>::iterator iter);
+		void kill(Sprite*);
 	private:
 		friend class Sprite;
 		friend class NonPlayableSprite;
