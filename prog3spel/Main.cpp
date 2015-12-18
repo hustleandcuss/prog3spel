@@ -16,8 +16,8 @@ int main(int argc, char** arv) {
 		PlayableSprite* s1 = PlayableSprite::getInstance(gf, 100, 400, 50, 50);
 
 		int xcord = rand() % gfWidth;
-		int ycord = rand() % 5000 + 0;
-		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -5, 50, 50);
+	//	int ycord = rand() % 5000 + 0;
+		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, 5, 50, 50);
 	/*	
 		for(int i = 0; i < 100; i++) {
 			int xcord = rand() % gfWidth;
@@ -26,6 +26,8 @@ int main(int argc, char** arv) {
 		}*/
 		
 		gf->run();
+		SDL_Delay(2000);
+		gf->kill(s);
 
 	}
 	catch (runtime_error& e) {

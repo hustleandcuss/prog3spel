@@ -16,7 +16,7 @@ namespace gamepackage {
 		void run();
 		void add(Sprite* spr);
 		void setFps(int newFps);
-		void kill(Sprite* spr);
+		void kill(Sprite*);
 	private:
 		friend class Sprite;
 		friend class NonPlayableSprite;
