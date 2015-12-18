@@ -66,6 +66,7 @@ namespace gamepackage {
 				s->tick();
 			}
 
+			//kollar om Spritsen krockar
 			SDL_RenderClear(ren);
 			for (Sprite* s : spritesVec) {
 				for (Sprite* s2 : spritesVec) {
@@ -95,7 +96,7 @@ namespace gamepackage {
 	}
 
 	void GameFrame::kill(Sprite* s) {
-		std::remove(spritesVec.begin(), spritesVec.end(), s);
+		spritesVec.erase(std::remove(spritesVec.begin(), spritesVec.end(), s));
 	}
 
 	void GameFrame::setFps(int newFps)
