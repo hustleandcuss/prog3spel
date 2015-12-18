@@ -16,7 +16,8 @@ namespace gamepackage {
 		void run();
 		void add(Sprite* spr);
 		void setFps(int newFps);
-		void kill(Sprite*);
+		//void kill(Sprite*);
+		std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator);
 		std::vector<Sprite*> getSpritesVec() {
 			return spritesVec;
 		}

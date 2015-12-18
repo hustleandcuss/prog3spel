@@ -15,7 +15,6 @@ namespace gamepackage {
 		void keyUp(const SDL_Event&) {}
 		void collision();
 		static NonPlayableSprite* getInstance(GameFrame* gf, int x, int y, int w, int h);
-		bool isDead = false;
 		~NonPlayableSprite();
 	protected:
 		NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h);

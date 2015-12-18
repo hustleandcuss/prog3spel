@@ -25,24 +25,25 @@ namespace gamepackage {
 	}
 
 	void GameFrame::run()
-	{
+	{	
 		//rensa bilden
 		SDL_RenderClear(ren);
 		//rita uta spritsen etc.
 		for (Sprite* s : spritesVec) {
 			s->draw();
 		}
-		//loop som går så länge runOn = true
+		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
 		int delay; //hur lång tid det ska väntas innan nästa tick
 
+		//loop som går så länge runOn = true
 		bool runOn = true;
 		while (runOn) {
 			SDL_Event e;
-			//while loop m. switch(eve) som väntar på event
 			nextTick = SDL_GetTicks() + tickInterval;
-			
+
+			//while loop m. switch(eve) som väntar på event
 			while (SDL_PollEvent(&e)) {
 				switch (e.type) {
 				case SDL_QUIT: 
@@ -72,14 +73,8 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
-						s2->collision();
+					//	s2->collision();
 					}
-				}
-			}
-
-			for (Sprite* s : spritesVec) {
-				if (s->isDead) {
-					kill(s);
 				}
 			}
 
@@ -88,6 +83,17 @@ namespace gamepackage {
 				s->draw();
 			}
 			SDL_RenderPresent(ren);
+
+			//tar bort alla sprites som är isDead
+			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
+				if ((*iter)->isDead) {
+					iter = kill(iter);
+				}
+				else {
+					iter++;
+				}
+
+			}
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -101,8 +107,9 @@ namespace gamepackage {
 		spritesVec.push_back(spr);
 	}
 
-	void GameFrame::kill(Sprite* s) {
-		spritesVec.erase(std::remove(spritesVec.begin(), spritesVec.end(), s));
+	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
+		iter = spritesVec.erase(iter);
+		return iter;
 	}
 
 	void GameFrame::setFps(int newFps)

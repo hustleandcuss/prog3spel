@@ -17,12 +17,12 @@ int main(int argc, char** arv) {
 
 		int xcord = rand() % gfWidth;
 	//	int ycord = rand() % 5000 + 0;
-		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, 5, 50, 50);
-		NonPlayableSprite* s2 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
-		NonPlayableSprite* s3 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
-		gf->kill(s);
+		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, 10, 5, 50, 50);
+		NonPlayableSprite* s2 = NonPlayableSprite::getInstance(gf, 500, 5, 60, 60);
+		NonPlayableSprite* s3 = NonPlayableSprite::getInstance(gf, 300, 0, 60, 60);
+	//	gf->kill(s);
 
-		cout << gf->getSpritesVec().size();
+	//	cout << gf->getSpritesVec().size();
 
 	/*	
 		for(int i = 0; i < 100; i++) {
@@ -31,7 +31,7 @@ int main(int argc, char** arv) {
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
 		}*/
 		
-	//	gf->run();
+		gf->run();
 	//	SDL_Delay(2000);
 	//	gf->kill(s);
 

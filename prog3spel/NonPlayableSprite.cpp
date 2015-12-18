@@ -35,10 +35,10 @@ namespace gamepackage {
 		rect.y++;
 		tickCount++;
 	}
-
 	
 	void NonPlayableSprite::collision() {
-		
+		std::cout << "DED" << std::endl;
+		isDead = true;
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()
