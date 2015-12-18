@@ -15,6 +15,7 @@ namespace gamepackage {
 		virtual void keyDown(const SDL_Event&) {}
 		virtual void keyUp(const SDL_Event&) {}
 		virtual void collision() {}
+		bool isDead = false;
 		virtual ~Sprite();
 		SDL_Rect getPos();
 		bool isDead = false;
