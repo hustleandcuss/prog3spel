@@ -37,7 +37,7 @@ namespace gamepackage {
 	}
 	void PlayableSprite::keyUp(const SDL_Event& e) {
 		speed = 0;
-		shownSprite = standingSprite;
+	//	shownSprite = standingSprite;
 	}
 
 	PlayableSprite* PlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {
