@@ -18,7 +18,6 @@ namespace gamepackage {
 		bool isDead = false;
 		virtual ~Sprite();
 		SDL_Rect getPos();
-		bool isDead = false;
 	protected:
 		Sprite(GameFrame* gf, int x, int y, int w, int h);
 		SDL_Rect rect;

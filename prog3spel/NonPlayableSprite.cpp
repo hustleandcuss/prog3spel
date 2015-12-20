@@ -38,7 +38,7 @@ namespace gamepackage {
 
 	
 	void NonPlayableSprite::collision() {
-		
+		isDead = true;
 	}
 
 	NonPlayableSprite::~NonPlayableSprite()

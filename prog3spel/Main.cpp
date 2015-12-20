@@ -20,9 +20,7 @@ int main(int argc, char** arv) {
 		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, 5, 50, 50);
 		NonPlayableSprite* s2 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
 		NonPlayableSprite* s3 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
-		gf->kill(s);
 
-		cout << gf->getSpritesVec().size();
 
 	/*	
 		for(int i = 0; i < 100; i++) {
@@ -31,7 +29,7 @@ int main(int argc, char** arv) {
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
 		}*/
 		
-	//	gf->run();
+		gf->run();
 		SDL_Delay(2000);
 		gf->kill(s);
 

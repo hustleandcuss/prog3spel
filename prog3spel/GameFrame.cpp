@@ -2,10 +2,13 @@
 #include "Sprite.h"
 #include <vector>
 #include <algorithm>
-
+#include <functional>
 
 namespace gamepackage {
-
+	bool condition(gamepackage::Sprite* s)
+	{
+		return s->isDead;
+	}
 	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
 	{
 		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
@@ -76,13 +79,6 @@ namespace gamepackage {
 					}
 				}
 			}
-
-			for (Sprite* s : spritesVec) {
-				if (s->isDead) {
-					kill(s);
-				}
-			}
-
 			//rensa och rita om spritesen
 			for (Sprite* s : spritesVec) {
 				s->draw();
@@ -93,6 +89,7 @@ namespace gamepackage {
 			if (delay > 0) {
 				SDL_Delay(delay);
 			}
+			remove_if(spritesVec.begin(), spritesVec.end(), condition);
 		} //while runOn
 	} //run()
 
@@ -109,5 +106,6 @@ namespace gamepackage {
 	{
 		fps = newFps;
 	}
+	
 
 }
