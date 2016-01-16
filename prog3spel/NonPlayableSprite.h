@@ -1,3 +1,6 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #ifndef NONPLAYABLESPRITE_H
 #define NONPLAYABLESPRITE_H
 

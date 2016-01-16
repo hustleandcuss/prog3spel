@@ -1,3 +1,6 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #ifndef SPRITE_H
 #define SPRITE_H
 #include <SDL.h>

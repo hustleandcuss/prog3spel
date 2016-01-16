@@ -1,26 +1,24 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #include "GameFrame.h"
 #include "Sprite.h"
 #include <vector>
 #include <algorithm>
-#include <functional>
+#include <SDL_image.h>
 
 namespace gamepackage {
-	bool condition(gamepackage::Sprite* s)
-	{
-		return s->isDead;
-	}
-	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h) : width(w), height(h)
+
+	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
 	{
 		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
 		ren = SDL_CreateRenderer(win, -1, 0);
-
 	}
 
 	GameFrame::~GameFrame()
 	{
 		SDL_DestroyRenderer(ren);
 		SDL_DestroyWindow(win);
-
 	}
 
 	SDL_Renderer * GameFrame::getRenderer()
@@ -28,31 +26,36 @@ namespace gamepackage {
 		return ren;
 	}
 
+	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
+		shortCommands[sc] = f;
+	}
+
 	void GameFrame::run()
-	{
+	{	
 		//rensa bilden
 		SDL_RenderClear(ren);
-		//rita uta spritsen etc.
-		for (Sprite* s : spritesVec) {
-			s->draw();
-		}
-		//loop som går så länge runOn = true
+		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
 		int delay; //hur lång tid det ska väntas innan nästa tick
 
+		//loop som går så länge runOn = true
 		bool runOn = true;
 		while (runOn) {
 			SDL_Event e;
-			//while loop m. switch(eve) som väntar på event
 			nextTick = SDL_GetTicks() + tickInterval;
 
+			//while loop m. switch(eve) som väntar på event
 			while (SDL_PollEvent(&e)) {
+				SDL_Scancode sc = SDL_GetScancodeFromKey(e.key.keysym.sym);
 				switch (e.type) {
-				case SDL_QUIT:
+				case SDL_QUIT: 
 					runOn = false;
 					break;
 				case SDL_KEYDOWN:
+					if (shortCommands.count(sc)) {
+						shortCommands[sc]();
+					}
 					for (Sprite* s : spritesVec) {
 						s->keyDown(e);
 					}
@@ -76,53 +79,53 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
-						s2->collision();
 					}
 				}
 			}
-			//rensa och rita om spritesen
+
+			//rita ut spritesen etc.
+			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
+			SDL_RenderCopy(ren, tex, NULL, NULL);
+
 			for (Sprite* s : spritesVec) {
 				s->draw();
 			}
+
 			SDL_RenderPresent(ren);
 
+			//tar bort alla sprites som är isDead
+			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
+				if ((*iter)->isDead) {
+					iter = kill(iter);
+				}
+				else {
+					iter++;
+				}
+
+			}
+			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
 				SDL_Delay(delay);
 			}
-			remove_if(spritesVec.begin(), spritesVec.end(), condition);
 		} //while runOn
 	} //run()
 
+
+	//lägg till Sprite
 	void GameFrame::add(Sprite * spr)
 	{
 		spritesVec.push_back(spr);
 	}
 
-	void GameFrame::kill(Sprite* s) {
-		spritesVec.erase(std::remove(spritesVec.begin(), spritesVec.end(), s));
+	//ta bort Sprite
+	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
+		iter = spritesVec.erase(iter);
+		return iter;
 	}
-
-	SDL_Window * GameFrame::getWindow() const
-	{
-		return win;
-	}
-
-	int GameFrame::getWidth() const
-	{
-		return width;
-	}
-
-	int GameFrame::getHeigth() const
-	{
-		return height;
-	}
-
 
 	void GameFrame::setFps(int newFps)
 	{
 		fps = newFps;
 	}
-
-
 }
