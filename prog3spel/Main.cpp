@@ -1,6 +1,3 @@
-//Spelmotor av Simson Schweitz och Olivia Lennerö
-//Vi aspirerar på betyg: C
-
 #include "GameFrame.h"
 #include "Sprite.h"
 #include "PlayableSprite.h"
@@ -11,32 +8,30 @@
 using namespace std;
 using namespace gamepackage;
 
-
-void quit() {
-	exit(0);
-}
-
 int main(int argc, char** arv) {
 	try {
 
 		int gfWidth = 700;
 		GameFrame* gf = new GameFrame("Play a Sprite", 200, 200, gfWidth, 500);
-		PlayableSprite* s1 = PlayableSprite::getInstance(gf, 100, 400, 100, 100);
-		gf->add(s1);
+		PlayableSprite* s1 = PlayableSprite::getInstance(gf, 100, 400, 50, 50);
+
 		int xcord = rand() % gfWidth;
-		int ycord = rand() % 5000 + 0;
-	
+	//	int ycord = rand() % 5000 + 0;
+		NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, 5, 50, 50);
+		NonPlayableSprite* s2 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
+		NonPlayableSprite* s3 = NonPlayableSprite::getInstance(gf, xcord, 10, 60, 60);
+
+
+	/*	
 		for(int i = 0; i < 100; i++) {
 			int xcord = rand() % gfWidth;
 			int ycord = rand() % 5000 + 0;
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
-			//gf->add(s);
-		}
-		cout << gf->getSpritesVec().size();
-
-		gf->installShortCmd(quit, SDL_SCANCODE_ESCAPE);
-	
+		}*/
+		
 		gf->run();
+		SDL_Delay(2000);
+		gf->kill(s);
 
 	}
 	catch (runtime_error& e) {

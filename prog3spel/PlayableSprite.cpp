@@ -18,25 +18,22 @@ namespace gamepackage {
 
 	void PlayableSprite::draw() {
 		SDL_RenderCopy(win->getRenderer(), shownSprite, NULL, &rect);
+		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
+		//standingSprite, leftSprite eller rightSprite...
 	}
 
 
 	void PlayableSprite::keyDown(const SDL_Event& e) {
 		if (e.key.keysym.sym == SDLK_LEFT) {
-			
-			if (rect.x >= 0) {
-				++speed;
-				rect.x -= speed;
-				shownSprite = leftSprite;
-			}
+			++speed;
+			rect.x -= speed;
+			shownSprite = leftSprite;
 
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			if (rect.x <= win->getWidth()) {
-				++speed;
-				rect.x += speed;
-				shownSprite = rightSprite;
-			}
+			++speed;
+			rect.x += speed;
+			shownSprite = rightSprite;
 		}
 
 	}
