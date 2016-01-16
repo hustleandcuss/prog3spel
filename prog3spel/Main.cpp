@@ -8,6 +8,11 @@
 using namespace std;
 using namespace gamepackage;
 
+
+void quit() {
+	exit(0);
+}
+
 int main(int argc, char** arv) {
 	try {
 
@@ -30,6 +35,7 @@ int main(int argc, char** arv) {
 
 	//	cout << gf->getSpritesVec().size();
 
+		gf->installShortCmd(quit, SDL_SCANCODE_ESCAPE);
 	
 		for(int i = 0; i < 100; i++) {
 			int xcord = rand() % gfWidth;

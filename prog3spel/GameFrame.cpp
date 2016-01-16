@@ -13,7 +13,6 @@ namespace gamepackage {
 	{
 		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
 		ren = SDL_CreateRenderer(win, -1, 0);
-
 	}
 
 	GameFrame::~GameFrame()
@@ -25,6 +24,10 @@ namespace gamepackage {
 	SDL_Renderer * GameFrame::getRenderer()
 	{
 		return ren;
+	}
+
+	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
+		shortCommands[sc] = f;
 	}
 
 	void GameFrame::run()
@@ -50,11 +53,15 @@ namespace gamepackage {
 
 			//while loop m. switch(eve) som väntar på event
 			while (SDL_PollEvent(&e)) {
+				SDL_Scancode sc = SDL_GetScancodeFromKey(e.key.keysym.sym);
 				switch (e.type) {
 				case SDL_QUIT: 
 					runOn = false;
 					break;
 				case SDL_KEYDOWN:
+					if (shortCommands.count(sc)) {
+						shortCommands[sc]();
+					}
 					for (Sprite* s : spritesVec) {
 						s->keyDown(e);
 					}
@@ -83,13 +90,14 @@ namespace gamepackage {
 				}
 			}
 
-			//rensa och rita om spritesen
+			//rita om spritesen
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
 			for (Sprite* s : spritesVec) {
 				s->draw();
 			}
+
 			SDL_RenderPresent(ren);
 
 			//tar bort alla sprites som är isDead
@@ -124,5 +132,4 @@ namespace gamepackage {
 	{
 		fps = newFps;
 	}
-
 }
