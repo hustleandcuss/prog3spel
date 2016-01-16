@@ -25,7 +25,6 @@ namespace gamepackage {
 	{
 		return ren;
 	}
-
 	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
 		shortCommands[sc] = f;
 	}
@@ -127,5 +126,15 @@ namespace gamepackage {
 	void GameFrame::setFps(int newFps)
 	{
 		fps = newFps;
+	}
+
+	int GameFrame::getWidth() const
+	{
+		return width;
+	}
+
+	int GameFrame::getHeigth() const
+	{
+		return height;
 	}
 }

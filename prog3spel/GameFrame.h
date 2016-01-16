@@ -20,6 +20,8 @@ namespace gamepackage {
 		void run();
 		void add(Sprite* spr);
 		void setFps(int newFps);
+		int getWidth() const;
+		int getHeigth() const;
 		std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator);
 		std::vector<Sprite*> getSpritesVec() {
 			return spritesVec;
@@ -28,6 +30,7 @@ namespace gamepackage {
 	private:
 		friend class Sprite;
 		friend class NonPlayableSprite;
+		int height, width;
 		std::vector<Sprite*> spritesVec;
 		std::map<SDL_Scancode, void(*)()> shortCommands;
 		int fps = 60;

@@ -22,7 +22,7 @@ int main(int argc, char** arv) {
 		int gfWidth = 700;
 		GameFrame* gf = new GameFrame("Play a Sprite", 200, 200, gfWidth, 500);
 		PlayableSprite* s1 = PlayableSprite::getInstance(gf, 100, 400, 100, 100);
-
+		gf->add(s1);
 		int xcord = rand() % gfWidth;
 		int ycord = rand() % 5000 + 0;
 	
@@ -30,7 +30,9 @@ int main(int argc, char** arv) {
 			int xcord = rand() % gfWidth;
 			int ycord = rand() % 5000 + 0;
 			NonPlayableSprite* s = NonPlayableSprite::getInstance(gf, xcord, -ycord, 60, 60);
+			//gf->add(s);
 		}
+		cout << gf->getSpritesVec().size();
 
 		gf->installShortCmd(quit, SDL_SCANCODE_ESCAPE);
 	

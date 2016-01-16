@@ -10,10 +10,10 @@ namespace gamepackage {
 	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/playableLeft.gif");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/playableRight.gif");
-		standingSprite = IMG_LoadTexture(win->getRenderer(),"images/playableStanding.gif" );
-		shownSprite = leftSprite;
+		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/playableLeft150x163.png");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/playableRight150x163.png");
+		standingSprite = IMG_LoadTexture(win->getRenderer(),"images/playableStanding" );
+		shownSprite = standingSprite;
 	}
 
 	void PlayableSprite::draw() {
