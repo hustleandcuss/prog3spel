@@ -35,12 +35,6 @@ namespace gamepackage {
 		//rensa bilden
 		SDL_RenderClear(ren);
 		
-		//rita uta spritsen etc.
-
-		for (Sprite* s : spritesVec) {
-			s->draw();
-		}
-		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
 		int delay; //hur lång tid det ska väntas innan nästa tick
@@ -85,12 +79,11 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
-					//	s2->collision();
 					}
 				}
 			}
 
-			//rita om spritesen
+			//rita ut spritesen etc.
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
@@ -118,11 +111,14 @@ namespace gamepackage {
 		} //while runOn
 	} //run()
 
+
+	//lägg till Sprite
 	void GameFrame::add(Sprite * spr)
 	{
 		spritesVec.push_back(spr);
 	}
 
+	//ta bort Sprite
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
 		iter = spritesVec.erase(iter);
 		return iter;
