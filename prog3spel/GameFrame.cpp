@@ -1,8 +1,11 @@
+//Spelmotor av Simpson Schwize och Olivia Lennerö
+//Vi aspirerar på betyg: 
+
 #include "GameFrame.h"
 #include "Sprite.h"
 #include <vector>
 #include <algorithm>
-
+#include <SDL_image.h>
 
 namespace gamepackage {
 
@@ -28,7 +31,9 @@ namespace gamepackage {
 	{	
 		//rensa bilden
 		SDL_RenderClear(ren);
+		
 		//rita uta spritsen etc.
+
 		for (Sprite* s : spritesVec) {
 			s->draw();
 		}
@@ -79,6 +84,9 @@ namespace gamepackage {
 			}
 
 			//rensa och rita om spritesen
+			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
+			SDL_RenderCopy(ren, tex, NULL, NULL);
+
 			for (Sprite* s : spritesVec) {
 				s->draw();
 			}

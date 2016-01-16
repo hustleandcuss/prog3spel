@@ -14,8 +14,8 @@ namespace gamepackage {
 	NonPlayableSprite::NonPlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		spriteLeft = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft.png");
-		spriteRight = IMG_LoadTexture(win->getRenderer(), "images/fallingRight.png");
+		spriteLeft = IMG_LoadTexture(win->getRenderer(), "images/fallingLeft.gif");
+		spriteRight = IMG_LoadTexture(win->getRenderer(), "images/fallingRight.gif");
 	}
 
 	void NonPlayableSprite::draw() {
@@ -37,7 +37,6 @@ namespace gamepackage {
 	}
 	
 	void NonPlayableSprite::collision() {
-		std::cout << "DED" << std::endl;
 		isDead = true;
 	}
 
