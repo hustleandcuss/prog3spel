@@ -1,10 +1,10 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #include "GameFrame.h"
 #include "Sprite.h"
 #include "PlayableSprite.h"
 #include "NonPlayableSprite.h"
-//Spelmotor av Simson Schweitz och Olivia Lennerö
-//Vi aspirerar på betyg: C
-
 #include <stdexcept>
 #include <iostream>
 
