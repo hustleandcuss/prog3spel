@@ -20,6 +20,10 @@ namespace gamepackage {
 		std::vector<Sprite*> getSpritesVec() {
 			return spritesVec;
 		}
+		SDL_Window* getWindow() const;
+		int getWidth() const;
+		int getHeigth() const;
+		
 	private:
 		friend class Sprite;
 		friend class NonPlayableSprite;
@@ -28,7 +32,7 @@ namespace gamepackage {
 		int varv = 0; //ska gå 60 varv per sekund
 		SDL_Window* win;
 		SDL_Renderer* ren;
-
+		int width, height;
 
 	};
 }

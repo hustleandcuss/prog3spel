@@ -1,7 +1,7 @@
 #include "PlayableSprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
-
+#include "iostream"
 namespace gamepackage {
 
 	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
@@ -16,22 +16,25 @@ namespace gamepackage {
 
 	void PlayableSprite::draw() {
 		SDL_RenderCopy(win->getRenderer(), shownSprite, NULL, &rect);
-		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
-		//standingSprite, leftSprite eller rightSprite...
 	}
 
 
 	void PlayableSprite::keyDown(const SDL_Event& e) {
 		if (e.key.keysym.sym == SDLK_LEFT) {
-			++speed;
-			rect.x -= speed;
-			shownSprite = leftSprite;
+			
+			if (rect.x >= 0) {
+				++speed;
+				rect.x -= speed;
+				shownSprite = leftSprite;
+			}
 
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			++speed;
-			rect.x += speed;
-			shownSprite = rightSprite;
+			if (rect.x <= win->getWidth()) {
+				++speed;
+				rect.x += speed;
+				shownSprite = rightSprite;
+			}
 		}
 
 	}
@@ -54,7 +57,7 @@ namespace gamepackage {
 
 	void PlayableSprite::collision()
 	{
-		
+		std::cout << "Kollision!" << std::endl;
 	}
 
 
