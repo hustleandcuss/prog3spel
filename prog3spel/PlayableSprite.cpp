@@ -1,3 +1,6 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #include "PlayableSprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
@@ -15,8 +18,7 @@ namespace gamepackage {
 
 	void PlayableSprite::draw() {
 		SDL_RenderCopy(win->getRenderer(), shownSprite, NULL, &rect);
-		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
-		//standingSprite, leftSprite eller rightSprite...
+		//keyDown och andra funktioner bestämmer om left/right/standingSprite ska ritas ut.
 	}
 
 
@@ -36,7 +38,6 @@ namespace gamepackage {
 	}
 	void PlayableSprite::keyUp(const SDL_Event& e) {
 		speed = 0;
-	//	shownSprite = standingSprite;
 	}
 
 	PlayableSprite* PlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {

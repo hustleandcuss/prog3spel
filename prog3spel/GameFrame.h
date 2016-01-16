@@ -1,3 +1,6 @@
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
+
 #ifndef GameFrame_h
 #define  GameFrame_h
 #include <vector>

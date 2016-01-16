@@ -1,5 +1,5 @@
-//Spelmotor av Simpson Schwize och Olivia Lennerö
-//Vi aspirerar på betyg: 
+//Spelmotor av Simson Schweitz och Olivia Lennerö
+//Vi aspirerar på betyg: C
 
 #include "GameFrame.h"
 #include "Sprite.h"
