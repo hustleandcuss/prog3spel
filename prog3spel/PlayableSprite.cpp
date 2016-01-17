@@ -4,6 +4,7 @@
 #include "PlayableSprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
+#include <iostream>
 
 namespace gamepackage {
 
@@ -24,18 +25,22 @@ namespace gamepackage {
 
 	void PlayableSprite::keyDown(const SDL_Event& e) {
 		if (e.key.keysym.sym == SDLK_LEFT) {
-			++speed;
-			rect.x -= speed;
-			shownSprite = leftSprite;
-
+			if (rect.x >= 0) {
+				++speed;
+				rect.x -= speed;
+				shownSprite = leftSprite;
+			}
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			++speed;
-			rect.x += speed;
-			shownSprite = rightSprite;
+			std::cout << win->getWidth();
+			if (rect.x <= (win->getWidth()) - rect.w){
+				++speed;
+				rect.x += speed;
+				shownSprite = rightSprite;
+			}
 		}
-
 	}
+
 	void PlayableSprite::keyUp(const SDL_Event& e) {
 		speed = 0;
 	}

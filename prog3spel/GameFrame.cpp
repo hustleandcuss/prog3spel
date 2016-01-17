@@ -9,7 +9,7 @@
 
 namespace gamepackage {
 
-	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h)
+	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h) : width(w), height(h)
 	{
 		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
 		ren = SDL_CreateRenderer(win, -1, 0);
@@ -20,6 +20,9 @@ namespace gamepackage {
 		SDL_DestroyRenderer(ren);
 		SDL_DestroyWindow(win);
 	}
+
+	/*
+	bool condition(g*/
 
 	SDL_Renderer * GameFrame::getRenderer()
 	{
@@ -87,22 +90,20 @@ namespace gamepackage {
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
-			for (Sprite* s : spritesVec) {
-				s->draw();
-			}
-
-			SDL_RenderPresent(ren);
-
 			//tar bort alla sprites som är isDead
+			//och ritar ut spritsen
 			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
 				else {
+					(*iter)->draw();
 					iter++;
 				}
 
 			}
+
+			SDL_RenderPresent(ren);
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -120,8 +121,21 @@ namespace gamepackage {
 
 	//ta bort Sprite
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
+		delete &iter;
 		iter = spritesVec.erase(iter);
 		return iter;
+	}
+
+	std::vector<Sprite*> GameFrame::getSpritesVec() {
+		return spritesVec;
+	}
+
+	int GameFrame::getWidth() const {
+		return width;
+	}
+
+	int GameFrame::getHeight() const {
+		return height;
 	}
 
 	void GameFrame::setFps(int newFps)
