@@ -12,7 +12,7 @@ namespace gamepackage {
 	{
 		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/playableLeft150x163.png");
 		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/playableRight150x163.png");
-		standingSprite = IMG_LoadTexture(win->getRenderer(),"images/playableStanding" );
+		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/playableStanding");
 		shownSprite = standingSprite;
 	}
 
@@ -25,16 +25,21 @@ namespace gamepackage {
 
 	void PlayableSprite::keyDown(const SDL_Event& e) {
 		if (e.key.keysym.sym == SDLK_LEFT) {
-			++speed;
-			rect.x -= speed;
-			shownSprite = leftSprite;
+			if (rect.x >= 0) {
+				++speed;
+				rect.x -= speed;
+				shownSprite = leftSprite;
+			}
 
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			++speed;
-			rect.x += speed;
-			shownSprite = rightSprite;
+			if (rect.x <=( win->getWidth()) - rect.w){
+				++speed;
+				rect.x += speed;
+				shownSprite = rightSprite;
 		}
+}
+		
 
 	}
 	void PlayableSprite::keyUp(const SDL_Event& e) {
