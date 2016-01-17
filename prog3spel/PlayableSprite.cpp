@@ -4,22 +4,22 @@
 #include "PlayableSprite.h"
 #include "GameFrame.h"
 #include <SDL_image.h>
+#include <iostream>
 
 namespace gamepackage {
 
 	PlayableSprite::PlayableSprite(GameFrame* gf, int x, int y, int w, int h) :
 		Sprite(gf, x, y, w, h)
 	{
-		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/playableLeft150x163.png");
-		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/playableRight150x163.png");
-		standingSprite = IMG_LoadTexture(win->getRenderer(), "images/playableStanding");
-		shownSprite = standingSprite;
+		leftSprite = IMG_LoadTexture(win->getRenderer(), "images/playableLeft.gif");
+		rightSprite = IMG_LoadTexture(win->getRenderer(), "images/playableRight.gif");
+		standingSprite = IMG_LoadTexture(win->getRenderer(),"images/playableStanding.gif" );
+		shownSprite = leftSprite;
 	}
 
 	void PlayableSprite::draw() {
 		SDL_RenderCopy(win->getRenderer(), shownSprite, NULL, &rect);
-		//Ska finnas en if-sats som kollar vilken figur som ska ritas ut
-		//standingSprite, leftSprite eller rightSprite...
+		//keyDown och andra funktioner bestämmer om left/right/standingSprite ska ritas ut.
 	}
 
 
@@ -30,21 +30,19 @@ namespace gamepackage {
 				rect.x -= speed;
 				shownSprite = leftSprite;
 			}
-
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			if (rect.x <=( win->getWidth()) - rect.w){
+			std::cout << win->getWidth();
+			if (rect.x <= (win->getWidth()) - rect.w){
 				++speed;
 				rect.x += speed;
 				shownSprite = rightSprite;
+			}
 		}
-}
-		
-
 	}
+
 	void PlayableSprite::keyUp(const SDL_Event& e) {
 		speed = 0;
-		shownSprite = standingSprite;
 	}
 
 	PlayableSprite* PlayableSprite::getInstance(GameFrame* gf, int x, int y, int w, int h) {
@@ -61,7 +59,7 @@ namespace gamepackage {
 
 	void PlayableSprite::collision()
 	{
-		
+		shownSprite = standingSprite;
 	}
 
 
