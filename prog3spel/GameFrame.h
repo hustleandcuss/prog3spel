@@ -3,10 +3,12 @@
 
 #ifndef GameFrame_h
 #define  GameFrame_h
+
 #include <vector>
 #include "SDL.h"
 #include <string>
 #include <map>
+
 namespace gamepackage {
 
 	class Sprite;
@@ -21,7 +23,6 @@ namespace gamepackage {
 		void add(Sprite* spr);
 		void setFps(int newFps);
 		std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator);
-		std::vector<Sprite*>& getSpritesVec();
 		void installShortCmd(void(*f)(), SDL_Scancode);
 		int getWidth() const;
 		int getHeight() const;
@@ -34,7 +35,6 @@ namespace gamepackage {
 		SDL_Window* win;
 		SDL_Renderer* ren;
 		int width, height;
-
 
 	};
 }

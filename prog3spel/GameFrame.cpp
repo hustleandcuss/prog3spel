@@ -29,6 +29,7 @@ namespace gamepackage {
 	{
 		return ren;
 	}
+
 	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
 		shortCommands[sc] = f;
 	}
@@ -39,10 +40,6 @@ namespace gamepackage {
 		SDL_RenderClear(ren);
 		
 		//rita uta spritsen etc.
-
-		for (Sprite* s : spritesVec) {
-			s->draw();
-		}
 		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
@@ -92,49 +89,24 @@ namespace gamepackage {
 				}
 			}
 
-			//rita om spritesen
+			//rita ut background
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
-			for (Sprite* s : spritesVec) {
-				s->draw();
-			}
-
-			SDL_RenderPresent(ren);
-
 			//tar bort alla sprites som är isDead
-			/* fungerar ej
-			for (auto it = spritesVec.begin(); it != spritesVec.end(); ++it) {
-				if ((*it)->isDead) {
-					auto tmp = it;
-					++tmp;
-					delete *it;
-					it = tmp;
-				}
-			}
-			*/
-			/* fungerar ej
-			for (auto it = spritesVec.begin(); it != spritesVec.end(); it++) {
-				if ((*it)->isDead) {
-					delete (*it);
-				}
-			}*/
-			
-		/*	for (int i = 0; i < spritesVec.size(); i++)
-			{
-				if(spritesVec[i]->isDead)
-				delete spritesVec[i];
-			}*/
-
-			/*for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
+			//och ritar ut de andra
+			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
 				else {
+					(*iter)->draw();
 					iter++;
 				}
 
-			}*/
+			}
+
+			SDL_RenderPresent(ren);
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -149,10 +121,10 @@ namespace gamepackage {
 	}
 
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
+		delete (&iter);
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
-	
 
 	void GameFrame::setFps(int newFps)
 	{
@@ -167,9 +139,5 @@ namespace gamepackage {
 	int GameFrame::getHeight() const
 	{
 		return height;
-	}
-	void GameFrame::deleteSprite(Sprite * s)
-	{
-		delete s;
 	}
 }

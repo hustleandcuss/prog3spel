@@ -37,6 +37,7 @@ namespace gamepackage {
 	void NonPlayableSprite::tick() {
 		rect.y++;
 		tickCount++;
+
 	}
 	
 	void NonPlayableSprite::collision() {

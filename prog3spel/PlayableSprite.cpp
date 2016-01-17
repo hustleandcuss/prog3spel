@@ -61,6 +61,4 @@ namespace gamepackage {
 		Sprite::collision();
 		shownSprite = standingSprite;
 	}
-
-
 }
