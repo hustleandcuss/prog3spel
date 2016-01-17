@@ -88,7 +88,6 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
-					//	s2->collision();
 					}
 				}
 			}
@@ -104,7 +103,30 @@ namespace gamepackage {
 			SDL_RenderPresent(ren);
 
 			//tar bort alla sprites som är isDead
-			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
+			/* fungerar ej
+			for (auto it = spritesVec.begin(); it != spritesVec.end(); ++it) {
+				if ((*it)->isDead) {
+					auto tmp = it;
+					++tmp;
+					delete *it;
+					it = tmp;
+				}
+			}
+			*/
+			/* fungerar ej
+			for (auto it = spritesVec.begin(); it != spritesVec.end(); it++) {
+				if ((*it)->isDead) {
+					delete (*it);
+				}
+			}*/
+			
+		/*	for (int i = 0; i < spritesVec.size(); i++)
+			{
+				if(spritesVec[i]->isDead)
+				delete spritesVec[i];
+			}*/
+
+			/*for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
@@ -112,7 +134,7 @@ namespace gamepackage {
 					iter++;
 				}
 
-			}
+			}*/
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -130,7 +152,7 @@ namespace gamepackage {
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
-
+	
 
 	void GameFrame::setFps(int newFps)
 	{
@@ -145,5 +167,9 @@ namespace gamepackage {
 	int GameFrame::getHeight() const
 	{
 		return height;
+	}
+	void GameFrame::deleteSprite(Sprite * s)
+	{
+		delete s;
 	}
 }
