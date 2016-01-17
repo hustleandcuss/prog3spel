@@ -32,7 +32,6 @@ namespace gamepackage {
 			}
 		}
 		else if (e.key.keysym.sym == SDLK_RIGHT) {
-			std::cout << win->getWidth();
 			if (rect.x <= (win->getWidth()) - rect.w){
 				++speed;
 				rect.x += speed;
@@ -59,6 +58,7 @@ namespace gamepackage {
 
 	void PlayableSprite::collision()
 	{
+		Sprite::collision();
 		shownSprite = standingSprite;
 	}
 

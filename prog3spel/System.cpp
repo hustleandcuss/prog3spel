@@ -18,7 +18,6 @@ namespace gamePackage {
 
 	System::~System()
 	{
-		
-		SDL_Quit();
+	SDL_Quit();
 	}
 }
