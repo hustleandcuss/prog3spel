@@ -89,7 +89,7 @@ namespace gamepackage {
 				}
 			}
 
-			//rita om spritesen
+			//rita ut background
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
@@ -121,6 +121,7 @@ namespace gamepackage {
 	}
 
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
+		delete (&iter);
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
