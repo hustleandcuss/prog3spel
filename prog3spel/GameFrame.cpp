@@ -29,6 +29,7 @@ namespace gamepackage {
 	{
 		return ren;
 	}
+
 	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
 		shortCommands[sc] = f;
 	}
@@ -39,10 +40,6 @@ namespace gamepackage {
 		SDL_RenderClear(ren);
 		
 		//rita uta spritsen etc.
-
-		for (Sprite* s : spritesVec) {
-			s->draw();
-		}
 		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
@@ -88,7 +85,6 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
-					//	s2->collision();
 					}
 				}
 			}
@@ -97,22 +93,20 @@ namespace gamepackage {
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
-			for (Sprite* s : spritesVec) {
-				s->draw();
-			}
-
-			SDL_RenderPresent(ren);
-
 			//tar bort alla sprites som är isDead
+			//och ritar ut de andra
 			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
 				else {
+					(*iter)->draw();
 					iter++;
 				}
 
 			}
+
+			SDL_RenderPresent(ren);
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -130,7 +124,6 @@ namespace gamepackage {
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
-
 
 	void GameFrame::setFps(int newFps)
 	{
