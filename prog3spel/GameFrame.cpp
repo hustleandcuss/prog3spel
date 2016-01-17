@@ -90,17 +90,16 @@ namespace gamepackage {
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
+			for (Sprite* s : spritesVec) {
+				s->draw();
+			}
+
 			//tar bort alla sprites som är isDead
 			//och ritar ut spritsen
 			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
-				else {
-					(*iter)->draw();
-					iter++;
-				}
-
 			}
 
 			SDL_RenderPresent(ren);
