@@ -26,6 +26,7 @@ namespace gamepackage {
 		SDL_Rect rect;
 		GameFrame* win;
 	private:
+		void(*funk)();
 		Sprite(const Sprite&) = delete;
 		const Sprite& operator=(const Sprite&) = delete;
 	};

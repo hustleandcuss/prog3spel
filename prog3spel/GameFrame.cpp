@@ -9,7 +9,7 @@
 
 namespace gamepackage {
 
-	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h) : width(w), height(h)
+	GameFrame::GameFrame(std::string tit, int x, int y, int w, int h): height(h), width(w)
 	{
 		win = SDL_CreateWindow(tit.c_str(), x, y, w, h, 0);
 		ren = SDL_CreateRenderer(win, -1, 0);
@@ -17,18 +17,18 @@ namespace gamepackage {
 
 	GameFrame::~GameFrame()
 	{
+		for (auto it = spritesVec.begin(); it != spritesVec.end(); it++) {
+			delete (*it);
+		}
+
 		SDL_DestroyRenderer(ren);
 		SDL_DestroyWindow(win);
 	}
-
-	/*
-	bool condition(g*/
 
 	SDL_Renderer * GameFrame::getRenderer()
 	{
 		return ren;
 	}
-
 	void GameFrame::installShortCmd(void(*f)(), SDL_Scancode sc) {
 		shortCommands[sc] = f;
 	}
@@ -37,6 +37,12 @@ namespace gamepackage {
 	{	
 		//rensa bilden
 		SDL_RenderClear(ren);
+		
+		//rita uta spritsen etc.
+
+		for (Sprite* s : spritesVec) {
+			s->draw();
+		}
 		
 		int tickInterval = 1000 / fps;  // 1000 ms /fps = så lång tid ska ett varv ta
 		int nextTick; //när nästa tick ska komma
@@ -82,11 +88,12 @@ namespace gamepackage {
 				for (Sprite* s2 : spritesVec) {
 					if (SDL_HasIntersection(&s->getPos(), &s2->getPos()) && s != s2) {
 						s->collision();
+					//	s2->collision();
 					}
 				}
 			}
 
-			//rita ut spritesen etc.
+			//rita om spritesen
 			SDL_Texture* tex = IMG_LoadTexture(ren, "images/background.jpg");
 			SDL_RenderCopy(ren, tex, NULL, NULL);
 
@@ -94,15 +101,18 @@ namespace gamepackage {
 				s->draw();
 			}
 
+			SDL_RenderPresent(ren);
+
 			//tar bort alla sprites som är isDead
-			//och ritar ut spritsen
 			for (std::vector<Sprite*>::iterator iter = spritesVec.begin(); iter != spritesVec.end();) {
 				if ((*iter)->isDead) {
 					iter = kill(iter);
 				}
-			}
+				else {
+					iter++;
+				}
 
-			SDL_RenderPresent(ren);
+			}
 			
 			delay = nextTick - SDL_GetTicks(); //tar fram tiden som ska väntas om det ska väntas
 			if (delay > 0) {
@@ -111,34 +121,29 @@ namespace gamepackage {
 		} //while runOn
 	} //run()
 
-
-	//lägg till Sprite
 	void GameFrame::add(Sprite * spr)
 	{
 		spritesVec.push_back(spr);
 	}
 
-	//ta bort Sprite
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
-		delete &iter;
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
 
-	std::vector<Sprite*> GameFrame::getSpritesVec() {
-		return spritesVec;
-	}
-
-	int GameFrame::getWidth() const {
-		return width;
-	}
-
-	int GameFrame::getHeight() const {
-		return height;
-	}
 
 	void GameFrame::setFps(int newFps)
 	{
 		fps = newFps;
+	}
+
+	int GameFrame::getWidth() const
+	{
+		return width;
+	}
+
+	int GameFrame::getHeight() const
+	{
+		return height;
 	}
 }
