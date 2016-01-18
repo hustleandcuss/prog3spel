@@ -120,8 +120,8 @@ namespace gamepackage {
 		spritesVec.push_back(spr);
 	}
 
+	
 	std::vector<Sprite*>::iterator GameFrame::kill(std::vector<Sprite*>::iterator iter) {
-		delete (&iter);
 		iter = spritesVec.erase(iter);
 		return iter;
 	}
