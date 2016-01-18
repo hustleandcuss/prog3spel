@@ -26,6 +26,7 @@ namespace gamepackage {
 		void installShortCmd(void(*f)(), SDL_Scancode);
 		int getWidth() const;
 		int getHeight() const;
+		void deleteSprite(Sprite*);
 	private:
 		std::vector<Sprite*> spritesVec;
 		std::map<SDL_Scancode, void(*)()> shortCommands;
